@@ -5,11 +5,6 @@ import { useContext } from 'react';
 import { Box, Button, Typography } from "@mui/material";
 import { Logintype } from '../../context/Logintype';
 
-
-
-
-
-
 const LandingPage:React.FC = () => {
 
   const navigate=useNavigate();
@@ -29,8 +24,19 @@ const LandingPage:React.FC = () => {
       useEffect(()=>{
   
              setAuthStatus(false);
+             const call=async ()=>{
+                 await fetch(import.meta.env.VITE_TRIGGER_URL,{
+                        method:'GET',
+                        headers:{
+                            'Content-Type': 'application/json',
+                        }
+                 })
+             }
+             call();
   
       },[])
+
+
     
     
 
@@ -118,8 +124,8 @@ const LandingPage:React.FC = () => {
                
                 </Box>
 
-                 <Typography variant='body2' sx={{margin:'10px'}}> Test : Email : <span style={{color:'blue'}}>test@gmail.com </span> <br/>
-                  Password: <span style={{color:'blue'}}> test </span></Typography>
+                 {/*<Typography variant='body2' sx={{margin:'10px'}}> Test : Email : <span style={{color:'blue'}}>test@gmail.com </span> <br/>*/}
+                 {/* Password: <span style={{color:'blue'}}> test </span></Typography>*/}
             </Box>
 
             <Box
